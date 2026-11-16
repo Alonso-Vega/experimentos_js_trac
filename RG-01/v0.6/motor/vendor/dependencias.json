@@ -1,0 +1,39 @@
+{
+  "_comment": "Dependencias fijadas del motor. No se cambian sin crear una version nueva del motor. Huellas SHA-256 fijadas el 2026-11-15 a partir de la primera descarga verificada.",
+  "dependencies": [
+    {
+      "name": "jspsych",
+      "version": "8.2.3",
+      "license": "MIT",
+      "files": [
+        {
+          "path": "motor/vendor/jspsych-8.2.3/jspsych.min.js",
+          "urls": [
+            "https://cdn.jsdelivr.net/npm/jspsych@8.2.3/dist/index.browser.min.js",
+            "https://unpkg.com/jspsych@8.2.3/dist/index.browser.min.js"
+          ],
+          "sha256": "1746aff081a47b45169139be3b17ea5440adc81020b58bbe691305419c0f3883",
+          "optional": false
+        },
+        {
+          "path": "motor/vendor/jspsych-8.2.3/jspsych.css",
+          "urls": [
+            "https://cdn.jsdelivr.net/npm/jspsych@8.2.3/css/jspsych.css",
+            "https://unpkg.com/jspsych@8.2.3/css/jspsych.css"
+          ],
+          "sha256": "80708cec0e2573cb00ca5db6760812183e75fb04f4718ce507e9295a58d2b13a",
+          "optional": false
+        },
+        {
+          "path": "motor/vendor/jspsych-8.2.3/package.json",
+          "urls": [
+            "https://cdn.jsdelivr.net/npm/jspsych@8.2.3/package.json",
+            "https://unpkg.com/jspsych@8.2.3/package.json"
+          ],
+          "sha256": "ba12e285fa16f24446a384213b7934966827565a3565f6e2b2cbd63aa7b4fd08",
+          "optional": true
+        }
+      ]
+    }
+  ]
+}
