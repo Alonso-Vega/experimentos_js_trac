@@ -1,0 +1,5 @@
+Copia del motor de base/motor
+Versión: 0.8.0
+Copiado: 2026-11-23 (sustituye a la copia 0.7.0)
+Comprobado: los 34 archivos son idénticos byte a byte a base/motor en esa fecha.
+No editar a mano: los cambios del motor se hacen en base/motor y se copian (base/MANUAL.md, apartado 3.2).

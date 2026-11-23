@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>RG-01</title>
+  <!-- Rutas ./motor/: el motor es la copia propia de este experimento (motor/MOTOR-ORIGEN.txt). -->
+  <link rel="stylesheet" href="./motor/vendor/jspsych-8.2.3/jspsych.css">
+  <link rel="stylesheet" href="./motor/presentacion/estilos.css">
+  <script src="./motor/vendor/jspsych-8.2.3/jspsych.min.js"></script>
+</head>
+<body>
+  <div id="lab-app"></div>
+  <script type="module">
+    import config from "./config.js";
+    import exportar from "./exportar.js";
+    import { runStudy } from "./motor/presentacion/runner.js";
+    runStudy({ config, mount: document.getElementById("lab-app"), extraExports: exportar });
+  </script>
+</body>
+</html>

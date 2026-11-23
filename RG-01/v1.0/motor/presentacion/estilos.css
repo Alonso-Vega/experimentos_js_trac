@@ -1,0 +1,141 @@
+/* Estilos comunes de las tareas. Fondo neutro, texto grande, objetivos táctiles amplios. */
+:root {
+  --lab-bg: #f4f4f2;
+  --lab-fg: #1d1d1b;
+  --lab-muted: #6b6b66;
+  --lab-accent: #2f5d8a;
+  --lab-option-bg: #ffffff;
+  --lab-option-border: #8a8a85;
+  --lab-warn-bg: #fff4d6;
+  --lab-warn-border: #c99a1a;
+  --lab-error-bg: #fde4e1;
+  --lab-error-border: #b3261e;
+  --lab-test-bg: #e3edf8;
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+}
+
+html, body { margin: 0; padding: 0; background: var(--lab-bg); color: var(--lab-fg); }
+body { min-height: 100vh; }
+#lab-app { min-height: 100vh; }
+
+/* jsPsych centra su contenido; nosotros ocupamos toda la ventana. */
+.jspsych-content-wrapper { background: var(--lab-bg); }
+.jspsych-content { max-width: none; width: 100%; }
+
+/* ---------- Pantallas de texto ---------- */
+.lab-screen {
+  max-width: 44rem; margin: 0 auto; padding: 3rem 1.5rem; font-size: 1.25rem; line-height: 1.55; text-align: left;
+}
+.lab-screen h2 { font-size: 1.6rem; margin-top: 0; }
+.lab-continue, .lab-btn {
+  font: inherit; font-size: 1.1rem; padding: 0.8rem 2rem; min-height: 48px; border-radius: 6px;
+  border: 1px solid var(--lab-accent); background: var(--lab-accent); color: #fff; cursor: pointer;
+  touch-action: manipulation; margin-top: 1.5rem;
+}
+.lab-btn.secundario { background: #fff; color: var(--lab-accent); }
+.lab-btn:disabled { opacity: 0.5; cursor: default; }
+
+/* ---------- Ensayo de elección ---------- */
+.lab-trial { position: relative; height: 100vh; display: flex; flex-direction: column; user-select: none; -webkit-user-select: none; }
+.lab-header { height: 4.6rem; box-sizing: border-box; padding: 1.2rem; text-align: center; font-size: 1.4rem; }
+.lab-header .lab-pending { color: var(--lab-muted); margin-left: 2rem; }
+.lab-choice-area { flex: 1; display: flex; align-items: center; justify-content: center; gap: 12vw; }
+.lab-option {
+  font: inherit; font-size: 2.2rem; font-weight: 600;
+  min-width: 9rem; min-height: 9rem; padding: 1rem 2rem;
+  background: var(--lab-option-bg); border: 3px solid var(--lab-option-border); border-radius: 10px;
+  cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+}
+.lab-option:focus { outline: none; }
+.lab-option[hidden] { display: inline-block !important; visibility: hidden; }
+/* Ocupa exactamente la zona de los estímulos (debajo del marcador): el feedback y el punto
+   de fijación quedan centrados donde estaban las alternativas. */
+.lab-feedback {
+  position: absolute; left: 0; right: 0; top: 4.6rem; bottom: 0; display: flex; align-items: center; justify-content: center;
+  text-align: center; font-size: 2.6rem; font-weight: 700; pointer-events: none;
+}
+.lab-feedback.gain { color: #1f6b35; }
+.lab-feedback.loss { color: #a3271e; }
+
+/* ---------- Pantallas del investigador ---------- */
+.lab-setup { max-width: 46rem; margin: 0 auto; padding: 2rem 1.5rem; font-size: 1rem; line-height: 1.5; }
+.lab-setup h1 { font-size: 1.5rem; margin: 0 0 0.25rem; }
+.lab-setup .lab-sub { color: var(--lab-muted); margin-bottom: 1.5rem; }
+.lab-setup table { border-collapse: collapse; margin: 1rem 0; font-size: 0.95rem; }
+.lab-setup td { padding: 0.2rem 1rem 0.2rem 0; vertical-align: top; }
+.lab-setup td:first-child { color: var(--lab-muted); }
+.lab-setup code { font-size: 0.9em; }
+.lab-setup label { display: block; font-weight: 600; margin-top: 1rem; }
+.lab-setup input[type="text"] { font: inherit; font-size: 1.1rem; padding: 0.5rem; width: 16rem; margin-top: 0.3rem; }
+.lab-aviso { padding: 0.8rem 1rem; border-radius: 6px; margin: 0.8rem 0; border: 1px solid; }
+.lab-aviso.warn { background: var(--lab-warn-bg); border-color: var(--lab-warn-border); }
+.lab-aviso.error { background: var(--lab-error-bg); border-color: var(--lab-error-border); }
+.lab-aviso.prueba { background: var(--lab-test-bg); border-color: var(--lab-accent); font-weight: 600; }
+.lab-aviso ul { margin: 0.3rem 0 0; padding-left: 1.2rem; }
+.lab-investigador { margin-top: 3rem; padding-top: 1rem; border-top: 1px dashed var(--lab-muted); font-size: 0.95rem; color: var(--lab-muted); }
+.lab-investigador .lab-estado { color: var(--lab-fg); }
+.lab-banda-prueba {
+  position: fixed; top: 0; right: 0; background: var(--lab-accent); color: #fff; font-size: 0.75rem;
+  padding: 0.2rem 0.6rem; border-bottom-left-radius: 4px; z-index: 10; pointer-events: none;
+}
+
+/* ---------- Motor 0.2.0: figuras, fijación, formularios, personaje, cuenta atrás ---------- */
+.lab-option.lab-option-svg { padding: 0.6rem; min-width: 0; min-height: 0; background: transparent; border-color: transparent; }
+.lab-option.lab-option-svg svg { display: block; width: 9rem; height: 9rem; }
+.lab-option.lab-option-svg:active { background: rgba(0, 0, 0, 0.04); }
+.lab-choice-area:has(.lab-option:nth-child(3)) { gap: 7vw; }
+.lab-feedback.neutral { color: var(--lab-fg); }
+.lab-feedback.lab-fixation { color: var(--lab-fg); font-weight: 400; font-size: 3rem; }
+
+.lab-form form { margin-top: 1rem; }
+.lab-field { margin: 0 0 1.3rem; padding: 0; border: 0; font-size: 1.05rem; }
+.lab-field > label, .lab-field legend { display: block; font-weight: 600; margin-bottom: 0.35rem; }
+.lab-field input[type="text"], .lab-field input[type="number"], .lab-field textarea {
+  font: inherit; font-size: 1.05rem; padding: 0.5rem; width: 100%; max-width: 32rem; box-sizing: border-box;
+  border: 1px solid #9a9a95; border-radius: 4px; background: #fff;
+}
+.lab-field input.lab-num { max-width: 8rem; }
+.lab-field textarea { max-width: 40rem; }
+.lab-radio, .lab-check, .lab-field > label.lab-radio { display: block; font-weight: 400; padding: 0.2rem 0; margin: 0; cursor: pointer; }
+.lab-radio input, .lab-check input { transform: scale(1.2); margin-right: 0.5rem; }
+.lab-especificar { margin: 0.2rem 0 0.4rem 2rem; max-width: 20rem !important; }
+.lab-req { color: var(--lab-error-border); }
+.lab-req-nota { color: var(--lab-muted); font-size: 0.9rem; }
+.lab-field-error { color: var(--lab-error-border); font-size: 0.9rem; margin-top: 0.25rem; }
+.lab-details { margin-bottom: 0.5rem; background: #fff; border: 1px solid #ccc; border-radius: 4px; padding: 0.4rem 0.8rem; }
+.lab-details summary { cursor: pointer; color: var(--lab-accent); }
+.lab-details > div { max-height: 40vh; overflow: auto; padding-top: 0.5rem; font-size: 0.95rem; }
+.lab-continue:disabled { opacity: 0.45; cursor: default; }
+.lab-escalera { display: inline-flex; flex-direction: column; border-left: 6px solid #8a8a85; border-right: 6px solid #8a8a85; padding: 0 0.3rem; }
+.lab-peldano { display: flex; align-items: center; gap: 0.6rem; border-bottom: 3px solid #8a8a85; padding: 0.15rem 1.2rem; font-weight: 400; cursor: pointer; }
+.lab-peldano:first-child { border-top: 3px solid #8a8a85; }
+.lab-peldano span { min-width: 1.5rem; }
+
+.lab-countdown { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; }
+.lab-countdown-text { font-size: 1.6rem; }
+.lab-countdown-num { font-size: 5rem; font-weight: 700; min-height: 6rem; }
+
+.lab-speech { max-width: 60rem; margin: 0 auto; padding: 3rem 1.5rem; }
+.lab-speech-row { display: flex; align-items: flex-start; gap: 0; }
+.lab-character { flex: 0 0 auto; width: 14rem; }
+.lab-character svg, .lab-character img { width: 100%; height: auto; display: block; }
+.lab-bubble {
+  position: relative; margin-top: 1.5rem; margin-left: 1.6rem; padding: 1.3rem 1.6rem; background: #fff;
+  border: 3px solid var(--lab-fg); border-radius: 22px; font-size: 1.35rem; line-height: 1.5; max-width: 34rem;
+}
+.lab-bubble::before, .lab-bubble::after {
+  content: ""; position: absolute; top: 4.2rem; border-style: solid; border-color: transparent;
+}
+.lab-bubble::before { left: -30px; border-width: 14px 30px 14px 0; border-right-color: var(--lab-fg); }
+.lab-bubble::after { left: -24px; top: calc(4.2rem + 4px); border-width: 10px 24px 10px 0; border-right-color: #fff; }
+.lab-speech-footer { margin-top: 2.5rem; font-size: 1.2rem; text-align: center; }
+
+/* ---------- Motor 0.4.0: ensayos forzados y tramo repetible ---------- */
+/* Alternativa bloqueada en un ensayo forzado: visible pero atenuada; no responde (el clic se registra como entrada ignorada). */
+.lab-option.lab-option-locked { opacity: 0.25; cursor: not-allowed; }
+.lab-option.lab-option-locked:active { background: transparent; }
+/* Final del tramo repetible: los dos botones, uno junto a otro y centrados. */
+.lab-repeat-choice { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; align-items: center; min-height: 60vh; }
+
+/* ---------- Motor 0.5.0: pantalla del personaje con botón ---------- */
+.lab-speech-button { text-align: center; }
